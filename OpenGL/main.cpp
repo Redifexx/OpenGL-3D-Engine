@@ -11,6 +11,7 @@
 #include "VAO.h"
 #include "VBO.h"
 #include "EBO.h"
+#include "Camera.h"
 
 const unsigned int width = 800;
 const unsigned int height = 800;
@@ -24,6 +25,7 @@ GLfloat vertices[] =
 	 0.5f,	0.0f,	0.5f,		0.83f, 0.70f, 0.44f, 	5.0f, 0.0f,
 	 0.0f,	0.8f,	0.0f,		0.92f, 0.86f, 0.76f, 	2.5f, 5.0f
 };
+
 
 
 GLuint indices[] =
@@ -74,7 +76,6 @@ int main()
 	VBO1.Unbind();
 	EBO1.Unbind();
 	
-	GLuint uniID = glGetUniformLocation(shaderProgram.ID, "scale");
 
 	//Texture
 	
@@ -82,13 +83,10 @@ int main()
 	monke.texUnit(shaderProgram, "tex0", 0);
 
 
-	//Simple Timer setup
-	float rotation = 0.0f;
-	double prevTime = glfwGetTime();
-
 	glEnable(GL_DEPTH_TEST); //Enabling depth
 
-	
+	Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
+
 	while (!glfwWindowShouldClose(window))
 	{
 		//Specify background color
@@ -100,38 +98,8 @@ int main()
 		//Tells OpenGL which Shader Program to use
 		shaderProgram.Activate();
 
-
-		//Simple Timer
-		double curTime = glfwGetTime();
-		if (curTime - prevTime >= 1 / 60)
-		{
-			rotation += 0.5f;
-			prevTime = curTime;
-		}
-
-		//Matrices (3D)
-		glm::mat4 model = glm::mat4(1.0f);
-		glm::mat4 view = glm::mat4(1.0f);
-		glm::mat4 proj = glm::mat4(1.0f);
-		model = glm::rotate(model, glm::radians(rotation), glm::vec3(0.0f, 1.0f, 0.0f));
-		view = glm::translate(view, glm::vec3(0.0f, -0.5f, -2.0f));
-		proj = glm::perspective(glm::radians(45.0f), (float)(width / height), 0.1f, 100.0f);
-
-
-		//Local Coords
-		int modelLoc = glGetUniformLocation(shaderProgram.ID, "model");
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-
-		//World Coords
-		int viewLoc = glGetUniformLocation(shaderProgram.ID, "view");
-		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-
-		//Screen Coords
-		int projLoc = glGetUniformLocation(shaderProgram.ID, "proj");
-		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(proj));
-
-		//Assigns a value to the uniform; Must always be done after activating the shader program
-		glUniform1f(uniID, 0.5f);
+		camera.Inputs(window);
+		camera.Matrix(45.0f, 0.1f, 100.0f, shaderProgram, "camMatrix");
 
 		//Binds Texture
 		monke.Bind();
