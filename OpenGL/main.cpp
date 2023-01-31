@@ -18,6 +18,7 @@ const unsigned int height = 800;
 
 
 // Vertices coordinates
+// Pyramid Vertices
 GLfloat vertices[] =
 { //     COORDINATES     /        COLORS          /    TexCoord   /        NORMALS       //
 	-0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f, 	 0.0f, 0.0f,      0.0f, -1.0f, 0.0f, // Bottom side
@@ -44,6 +45,7 @@ GLfloat vertices[] =
 
 
 // Indices for vertices order
+// Pyramid Indices
 GLuint indices[] =
 {
 	0, 1, 2, // Bottom side
@@ -56,6 +58,7 @@ GLuint indices[] =
 
 GLfloat lightVertices[] =
 { // Light Cube Coords
+	// Cube Vertices
 	-0.1f, -0.1f,  0.1f,
 	-0.1f, -0.1f, -0.1f,
 	 0.1f, -0.1f, -0.1f,
@@ -68,6 +71,7 @@ GLfloat lightVertices[] =
 
 GLuint lightIndices[] =
 {
+	//Cube Indices
 	0, 1, 2,
 	0, 2, 3,
 	0, 4, 7,
@@ -87,27 +91,33 @@ int main()
 {
 	glfwInit();
 
+	//GLFW Versions + Profile
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); //What major version
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3); //What minor verion
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //which profile
-
-	GLFWwindow* window = glfwCreateWindow(width, height, "RedGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(width, height, "RedifexxGL", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "No Window :(" << std::endl;
 		glfwTerminate();
 		return -1;
 	}
-	glfwMakeContextCurrent(window); //This is the current window
 
-	gladLoadGL(); //load open gl
+	//Current Window
+	glfwMakeContextCurrent(window);
 
-	glViewport(0, 0, width, height); //where cords begin
+	//Loads OpenGL
+	gladLoadGL();
 
+	//Viewport Coordinates
+	glViewport(0, 0, width, height);
+
+	//Creating General Shader
 	Shader shaderProgram("default.vert", "default.frag");
 
+
+	//Sets up the buffers
 	VAO VAO1;
 	VAO1.Bind();
 
@@ -122,8 +132,11 @@ int main()
 	VBO1.Unbind();
 	EBO1.Unbind();
 
+	//Creating Emissive Shaders
 	Shader lightShader("light.vert", "light.frag");
 
+
+	//Binding VAOs to VBOs
 	VAO lightVAO;
 	lightVAO.Bind();
 
@@ -136,16 +149,19 @@ int main()
 	lightVBO.Unbind();
 	lightEBO.Unbind();
 
+	//Setting up Light Cube
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-
 	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
 	glm::mat4 lightModel = glm::mat4(1.0f);
 	lightModel = glm::translate(lightModel, lightPos);
 
+	//Setting up Pyramid
 	glm::vec3 pyramidPos = glm::vec3(0.0f, 0.0f, 0.0f);
 	glm::mat4 pyramidModel = glm::mat4(1.0f);
 	pyramidModel = glm::translate(pyramidModel, pyramidPos);
 
+
+	//Activating Various Shader Objects
 	lightShader.Activate();
 	glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
 	glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
@@ -157,14 +173,14 @@ int main()
 
 	
 
-	//Texture
-	
+	//Texture Object
 	Texture monke("LLL_ROCK32.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 	monke.texUnit(shaderProgram, "tex0", 0);
 
+	//Enabling depth (no overlapping triangles)
+	glEnable(GL_DEPTH_TEST);
 
-	glEnable(GL_DEPTH_TEST); //Enabling depth
-
+	//Camera Object
 	Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
 
 	while (!glfwWindowShouldClose(window))
@@ -181,8 +197,10 @@ int main()
 		//Tells OpenGL which Shader Program to use
 		shaderProgram.Activate();
 
+		//Shares Camera Pos with Shaders
 		glUniform3f(glGetUniformLocation(shaderProgram.ID, "camPos"), camera.Position.x, camera.Position.y, camera.Position.z);
 
+		//Shares camera atributes with Object Shader
 		camera.Matrix(shaderProgram, "camMatrix");
 
 		//Binds Texture
@@ -192,11 +210,15 @@ int main()
 		VAO1.Bind();
 
 		//Draws primitives, number of indices, datatype of indices, index of indices
+		//Pyramid
 		glDrawElements(GL_TRIANGLES, (sizeof(indices))/sizeof(int), GL_UNSIGNED_INT, 0);
 
+		//Activate light shader and shares cam attributes with shader
 		lightShader.Activate();
 		camera.Matrix(lightShader, "camMatrix");
 		lightVAO.Bind();
+
+		//Light Cube
 		glDrawElements(GL_TRIANGLES, sizeof(lightIndices) / sizeof(int), GL_UNSIGNED_INT, 0);
 
 
