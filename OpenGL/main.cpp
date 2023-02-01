@@ -19,8 +19,8 @@ const unsigned int height = 800;
 
 // Vertices coordinates
 // Pyramid Vertices
-GLfloat vertices[] =
-{ //     COORDINATES     /        COLORS          /    TexCoord   /        NORMALS       //
+GLfloat pyramidVertices[] =
+{ //     COORDNATES     /        COLORS          /    TexCoord   /        NORMALS       //
 	-0.5f, 0.0f,  0.5f,     0.83f, 0.70f, 0.44f, 	 0.0f, 0.0f,      0.0f, -1.0f, 0.0f, // Bottom side
 	-0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 0.0f, 5.0f,      0.0f, -1.0f, 0.0f, // Bottom side
 	 0.5f, 0.0f, -0.5f,     0.83f, 0.70f, 0.44f,	 5.0f, 5.0f,      0.0f, -1.0f, 0.0f, // Bottom side
@@ -46,7 +46,7 @@ GLfloat vertices[] =
 
 // Indices for vertices order
 // Pyramid Indices
-GLuint indices[] =
+GLuint pyramidIndices[] =
 {
 	0, 1, 2, // Bottom side
 	0, 2, 3, // Bottom side
@@ -54,6 +54,21 @@ GLuint indices[] =
 	7, 9, 8, // Non-facing side
 	10, 12, 11, // Right side
 	13, 15, 14 // Facing side
+};
+
+GLfloat vertices[] =
+{ //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
+	-1.0f, 0.0f,  1.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
+	-1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
+	 1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		0.0f, 1.0f, 0.0f,
+	 1.0f, 0.0f,  1.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f
+};
+
+// Indices for vertices order
+GLuint indices[] =
+{
+	0, 1, 2,
+	0, 2, 3
 };
 
 GLfloat lightVertices[] =
