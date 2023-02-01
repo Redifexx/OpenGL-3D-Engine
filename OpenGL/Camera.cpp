@@ -28,7 +28,7 @@ void Camera::Inputs(GLFWwindow* window)
 	float speedCheck = 0.2f;
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 	{
-		Position += speed * speedCheck *Orientation;
+		Position += speed * speedCheck * Orientation;
 	}
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 	{
