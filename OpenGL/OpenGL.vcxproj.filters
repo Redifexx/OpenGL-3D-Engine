@@ -99,5 +99,17 @@
     <Image Include="LLL_ROCK32.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="specular_map.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="diffuse_map.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="specular.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="diffuse.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -174,8 +174,12 @@
     <Image Include="..\..\..\..\OneDrive\Pictures\Blender Assets\monke256.png" />
     <Image Include="..\..\..\..\OneDrive\Pictures\Blender Assets\monke3.png" />
     <Image Include="..\..\..\..\OneDrive\Pictures\Blender Assets\monke512.png" />
+    <Image Include="diffuse.png" />
+    <Image Include="diffuse_map.png" />
     <Image Include="LLL32.png" />
     <Image Include="LLL_ROCK32.png" />
+    <Image Include="specular.png" />
+    <Image Include="specular_map.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

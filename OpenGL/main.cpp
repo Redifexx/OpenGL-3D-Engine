@@ -194,8 +194,11 @@ int main()
 	
 
 	//Texture Object
-	Texture monke("LLL_ROCK32.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-	monke.texUnit(shaderProgram, "tex0", 0);
+	Texture diffuse("diffuse.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+	diffuse.texUnit(shaderProgram, "tex0", 0);
+
+	Texture specular("specular.png", GL_TEXTURE_2D, 1, GL_RGBA, GL_UNSIGNED_BYTE);
+	specular.texUnit(shaderProgram, "tex1", 1);
 
 	//Enabling depth (no overlapping triangles)
 	glEnable(GL_DEPTH_TEST);
@@ -232,7 +235,8 @@ int main()
 		camera.Matrix(shaderProgram, "camMatrix");
 
 		//Binds Texture
-		monke.Bind();
+		diffuse.Bind();
+		specular.Bind();
 
 		//Binds the VAO so OpenGL knows to use it
 		VAO1.Bind();
@@ -259,7 +263,8 @@ int main()
 	VAO1.Delete();
 	VBO1.Delete();
 	EBO1.Delete();
-	monke.Delete();
+	diffuse.Delete();
+	specular.Delete();
 
 	shaderProgram.Delete();
 
