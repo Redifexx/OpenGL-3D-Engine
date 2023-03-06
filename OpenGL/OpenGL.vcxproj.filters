@@ -111,5 +111,17 @@
     <Image Include="diffuse.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="CCM_d.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="planks.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="tile_r.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="tile_d.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>
