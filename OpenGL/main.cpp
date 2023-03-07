@@ -152,7 +152,7 @@ int main()
 
 	//Setting up Pyramid
 	glm::vec3 pyramidPos = glm::vec3(0.0f, 0.0f, 0.0f);
-	glm::mat4 pyramidModel = glm::mat4(1.0f);
+	glm::mat4 pyramidModel = glm::mat4(1.0f); //find the xyz coords of the model
 	pyramidModel = glm::translate(pyramidModel, pyramidPos);
 
 
@@ -171,6 +171,14 @@ int main()
 	glUniform4f(glGetUniformLocation(shaderProgram.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
 	glUniform3f(glGetUniformLocation(shaderProgram.ID, "lightPos"), lightPos.x, lightPos.y, lightPos.z);
 
+	
+
+	//Texture Object
+	Texture diffuse("tile_d.png", GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE);
+	diffuse.texUnit(shaderProgram, "tex0", 0);
+	
+	Texture specular("tile_r.png", GL_TEXTURE_2D, 1, GL_RGBA, GL_UNSIGNED_BYTE);
+	specular.texUnit(shaderProgram, "tex1", 1);
 
 	//Enabling depth (no overlapping triangles)
 	glEnable(GL_DEPTH_TEST);
