@@ -125,8 +125,8 @@ int main()
 	Texture textures[]
 	{
 		//Texture Object
-		Texture("planks.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
-		Texture("planksSpec.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
+		Texture("diffuse_map1.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
+		Texture("specular_map.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
 	};
 
 	//Creating General Shader
@@ -213,5 +213,6 @@ int main()
 
 	glfwDestroyWindow(window);
 	glfwTerminate();
+	system("pause");
 	return 0;
 }

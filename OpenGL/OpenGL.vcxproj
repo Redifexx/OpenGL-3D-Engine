@@ -164,10 +164,8 @@
     <None Include="light.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
     <ClInclude Include="EBO.h" />
     <ClInclude Include="Mesh.h" />
-    <ClInclude Include="shaderClass.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="VAO.h" />
     <ClInclude Include="VBO.h" />
@@ -182,6 +180,10 @@
     <Image Include="LLL_ROCK32.png" />
     <Image Include="planks.png" />
     <Image Include="planksSpec.png" />
+    <Image Include="shadesDiffuse.png" />
+    <Image Include="shadesDiffuse1024.png" />
+    <Image Include="shadesRough.png" />
+    <Image Include="shadesRough1024.png" />
     <Image Include="specular.png" />
     <Image Include="specular_map.png" />
   </ItemGroup>

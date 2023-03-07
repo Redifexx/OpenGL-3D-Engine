@@ -19,6 +19,9 @@
     <Filter Include="Resource Files\Textures">
       <UniqueIdentifier>{cb71b04a-8245-4ff2-a25d-25ab5a840375}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Dep">
+      <UniqueIdentifier>{4329d38b-af8f-45df-b744-6c831fb0062a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c">
@@ -67,9 +70,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="shaderClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="VBO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -80,9 +80,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Mesh.h">
@@ -121,6 +118,18 @@
       <Filter>Resource Files\Textures</Filter>
     </Image>
     <Image Include="planksSpec.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="shadesDiffuse.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="shadesRough.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="shadesDiffuse1024.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="shadesRough1024.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
   </ItemGroup>
