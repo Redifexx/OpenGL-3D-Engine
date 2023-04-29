@@ -13,8 +13,8 @@
 #include "EBO.h"
 #include "Camera.h"
 
-const unsigned int width = 800;
-const unsigned int height = 800;
+const unsigned int width = 900;
+const unsigned int height = 900;
 
 
 // Vertices coordinates
@@ -59,9 +59,9 @@ GLuint pyramidIndices[] =
 GLfloat vertices[] =
 { //     COORDINATES     /        COLORS        /    TexCoord    /       NORMALS     //
 	-1.0f, 0.0f,  1.0f,		0.0f, 0.0f, 0.0f,		0.0f, 0.0f,		0.0f, 1.0f, 0.0f,
-	-1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		0.0f, 1.0f,		0.0f, 1.0f, 0.0f,
-	 1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		1.0f, 1.0f,		0.0f, 1.0f, 0.0f,
-	 1.0f, 0.0f,  1.0f,		0.0f, 0.0f, 0.0f,		1.0f, 0.0f,		0.0f, 1.0f, 0.0f
+	-1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		0.0f, 3.0f,		0.0f, 1.0f, 0.0f,
+	 1.0f, 0.0f, -1.0f,		0.0f, 0.0f, 0.0f,		3.0f, 3.0f,		0.0f, 1.0f, 0.0f,
+	 1.0f, 0.0f,  1.0f,		0.0f, 0.0f, 0.0f,		3.0f, 0.0f,		0.0f, 1.0f, 0.0f
 };
 
 // Indices for vertices order
@@ -194,10 +194,10 @@ int main()
 
 
 	//Texture Object
-	Texture diffuse("planks.png", GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE);
+	Texture diffuse("cobble_diff.png", GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE);
 	diffuse.texUnit(shaderProgram, "tex0", 0);
 
-	Texture specular("planks.png", GL_TEXTURE_2D, 1, GL_RGBA, GL_UNSIGNED_BYTE);
+	Texture specular("cobble_spec.png", GL_TEXTURE_2D, 1, GL_RED, GL_UNSIGNED_BYTE);
 	specular.texUnit(shaderProgram, "tex1", 1);
 
 	//Enabling depth (no overlapping triangles)

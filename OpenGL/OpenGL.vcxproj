@@ -177,6 +177,8 @@
     <Image Include="..\..\..\..\OneDrive\Pictures\Blender Assets\monke3.png" />
     <Image Include="..\..\..\..\OneDrive\Pictures\Blender Assets\monke512.png" />
     <Image Include="CCM_d.png" />
+    <Image Include="cobble_diff.png" />
+    <Image Include="cobble_spec.png" />
     <Image Include="diffuse.png" />
     <Image Include="diffuse_map.png" />
     <Image Include="LLL32.png" />

@@ -147,5 +147,11 @@
     <Image Include="tile_d.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
+    <Image Include="cobble_diff.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="cobble_spec.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>
