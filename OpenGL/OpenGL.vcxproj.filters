@@ -85,6 +85,12 @@
     <ClInclude Include="Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shaderClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\OneDrive\Pictures\Blender Assets\monke3.png">
@@ -130,6 +136,15 @@
       <Filter>Resource Files\Textures</Filter>
     </Image>
     <Image Include="shadesRough1024.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="tile_r.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="CCM_d.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="tile_d.png">
       <Filter>Resource Files\Textures</Filter>
     </Image>
   </ItemGroup>
