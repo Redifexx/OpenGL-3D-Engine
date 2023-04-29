@@ -1,5 +1,3 @@
-/*
-
 #ifndef MESH_CLASS_H
 #define MESH_CLASS_H
 
@@ -26,4 +24,4 @@ class Mesh
 };
 
 #endif
-*/
+
