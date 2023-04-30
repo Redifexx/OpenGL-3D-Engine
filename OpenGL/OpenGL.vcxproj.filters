@@ -22,6 +22,9 @@
     <Filter Include="Header Files\Dep">
       <UniqueIdentifier>{4329d38b-af8f-45df-b744-6c831fb0062a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Models">
+      <UniqueIdentifier>{15fa4560-4eed-46dd-8222-156cd1ab7057}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c">
@@ -54,6 +57,9 @@
     <ClCompile Include="Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.vert">
@@ -67,6 +73,15 @@
     </None>
     <None Include="light.vert">
       <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="pin.gltf">
+      <Filter>Resource Files\Models</Filter>
+    </None>
+    <None Include="..\..\..\..\OneDrive\Documents\Redifexx Games\Assets\monke.gltf">
+      <Filter>Resource Files\Models</Filter>
+    </None>
+    <None Include="Models\sword.gltf">
+      <Filter>Resource Files\Models</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +104,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shaderClass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

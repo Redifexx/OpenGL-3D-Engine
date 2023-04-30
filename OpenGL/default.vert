@@ -11,13 +11,15 @@ out vec3 Normal;
 out vec3 color;
 out vec2 texCoord;
 
-
 uniform mat4 camMatrix;
 uniform mat4 model;
+uniform mat4 translation;
+uniform mat4 rotation;
+uniform mat4 scale;
 
 void main()
 {
-	curPos = vec3(model * vec4(aPos, 1.0f));
+	curPos = vec3(model * translation * rotation * scale * vec4(aPos, 1.0f));
 	Normal = aNormal;
 	color = aColor;
 	texCoord = aTex;

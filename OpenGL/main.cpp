@@ -1,4 +1,5 @@
 #include "Mesh.h"
+#include "Model.h"
 
 const unsigned int width = 900;
 const unsigned int height = 900;
@@ -76,30 +77,34 @@ int main()
 	//Viewport Coordinates
 	glViewport(0, 0, width, height);
 
+	
 	Texture textures[]
 	{
 		//Texture Object
-		Texture("cobble_diff.png", "diffuse", 0, GL_RGBA, GL_UNSIGNED_BYTE),
-		Texture("cobble_spec.png", "specular", 1, GL_RED, GL_UNSIGNED_BYTE)
-	};
+		Texture("cobble_diff.png", "diffuse", 0),
+		Texture("cobble_spec.png", "specular", 1)
+	}; 
 
 	//Creating General Shader
 	Shader shaderProgram("default.vert", "default.frag");
 
+	
 	std::vector <Vertex> verts(vertices, vertices + sizeof(vertices) / sizeof(Vertex));
 	std::vector <GLuint> ind(indices, indices + sizeof(indices) / sizeof(GLuint));
 	std::vector <Texture> tex(textures, textures + sizeof(textures) / sizeof(Texture));
 	Mesh floor(verts, ind, tex);
+	
 
 	//Creating Emissive Shaders
 	Shader lightShader("light.vert", "light.frag");
 	std::vector <Vertex> lightVerts(lightVertices, lightVertices + sizeof(lightVertices) / sizeof(Vertex));
 	std::vector <GLuint> lightInd(lightIndices, lightIndices + sizeof(lightIndices) / sizeof(GLuint));
 	Mesh light(lightVerts, lightInd, tex);
+	
 
 	//Setting up Light Cube
 	glm::vec4 lightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
-	glm::vec3 lightPos = glm::vec3(0.5f, 0.5f, 0.5f);
+	glm::vec3 lightPos = glm::vec3(1.0f, 1.0f, 1.0f);
 	glm::mat4 lightModel = glm::mat4(1.0f);
 	lightModel = glm::translate(lightModel, lightPos);
 
@@ -108,12 +113,12 @@ int main()
 	glm::mat4 pyramidModel = glm::mat4(1.0f); //find the xyz coords of the model
 	pyramidModel = glm::translate(pyramidModel, pyramidPos);
 
-
+	
 	//Activating Various Shader Objects
 	lightShader.Activate();
 	glUniformMatrix4fv(glGetUniformLocation(lightShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(lightModel));
 	glUniform4f(glGetUniformLocation(lightShader.ID, "lightColor"), lightColor.x, lightColor.y, lightColor.z, lightColor.w);
-
+	
 
 	//Rotation
 	float rotation = 0.0f;
@@ -131,11 +136,13 @@ int main()
 	//Camera Object
 	Camera camera(width, height, glm::vec3(0.0f, 0.0f, 2.0f));
 
+	Model monke("models/monke.gltf");
+
 	while (!glfwWindowShouldClose(window))
 	{
 		//Specify background color
-		//glClearColor(0.0f, 0.13f, 0.17f, 1.0f); Redifexx Blue
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClearColor(0.0f, 0.13f, 0.17f, 1.0f); //Redifexx Blue
+		//glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		//Clean the back buffer and assign new color to it
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -152,6 +159,7 @@ int main()
 
 		floor.Draw(shaderProgram, camera);
 		light.Draw(lightShader, camera);
+		monke.Draw(shaderProgram, camera);
 
 		//Swao the back buffer with the front buffer
 		glfwSwapBuffers(window);
