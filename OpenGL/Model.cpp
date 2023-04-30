@@ -97,6 +97,7 @@ void Model::traverseNode(unsigned int nextNode, glm::mat4 matrix)
 	glm::mat4 matNextNode = matrix * matNode * trans * rot * sca;
 	if (node.find("mesh") != node.end())
 	{
+		std::cout << "check" << std::endl;
 		translationsMeshes.push_back(translation);
 		rotationsMeshes.push_back(rotation);
 		scalesMeshes.push_back(scale);
@@ -212,10 +213,11 @@ std::vector<Texture> Model::getTextures()
 
 	std::string fileStr = std::string(file);
 	std::string fileDirectory = fileStr.substr(0, fileStr.find_last_of('/') + 1);
+	std::cout << JSON["images"].size() << std::endl;
 
 	for (unsigned int i = 0; i < JSON["images"].size(); i++)
 	{
-		std::string texPath = JSON["buffers"][i]["uri"];
+		std::string texPath = JSON["images"][i]["uri"];
 
 		bool skip = false;
 		for (unsigned int j = 0; j < loadedTexName.size(); j++)
@@ -227,12 +229,13 @@ std::vector<Texture> Model::getTextures()
 				break;
 			}
 		}
-
+		std::cout << skip << std::endl;
 		if (!skip)
 		{
-			if (texPath.find("baseColor") != std::string::npos)
+			if (texPath.find("woof") != std::string::npos)
 			{
 				Texture diffuse = Texture((fileDirectory + texPath).c_str(), "diffuse", loadedTex.size());
+				std::cout << fileDirectory << texPath << std::endl;
 				textures.push_back(diffuse);
 				loadedTex.push_back(diffuse);
 				loadedTexName.push_back(texPath);

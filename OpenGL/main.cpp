@@ -3,7 +3,7 @@
 
 const unsigned int width = 900;
 const unsigned int height = 900;
-float texScale = 3.0f;
+float texScale = 15.0f;
 
 // Vertices coordinates
 Vertex vertices[] =
@@ -82,7 +82,8 @@ int main()
 	{
 		//Texture Object
 		Texture("cobble_diff.png", "diffuse", 0),
-		Texture("cobble_spec.png", "specular", 1)
+		Texture("cobble_spec.png", "specular", 1),
+		Texture("models/woof.png", "baseColor", 2)
 	}; 
 
 	//Creating General Shader
@@ -138,6 +139,8 @@ int main()
 
 	Model monke("models/monke.gltf");
 
+
+
 	while (!glfwWindowShouldClose(window))
 	{
 		//Specify background color
@@ -157,7 +160,7 @@ int main()
 			prevTime = crntTime;
 		}
 
-		floor.Draw(shaderProgram, camera);
+		floor.Draw(shaderProgram, camera, glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::quat(1.0f, 0.0f, 0.0f, 0.0f), glm::vec3(5));
 		light.Draw(lightShader, camera);
 		monke.Draw(shaderProgram, camera);
 

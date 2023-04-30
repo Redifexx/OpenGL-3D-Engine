@@ -29,7 +29,7 @@ private:
 
 	void loadMesh(unsigned int indMesh);
 
-	void traverseNode(unsigned int nextNode, glm::mat4 matrix = glm::mat4(1.0f));
+	void traverseNode(unsigned int nextNode, glm::mat4 matrix = glm::mat4(0.3f));
 
 	std::vector<unsigned char> getData();
 	std::vector<float> getFloats(json accessor);

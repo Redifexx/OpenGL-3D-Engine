@@ -42,28 +42,22 @@ vec4 pointLight()
 
 vec4 directionalLight()
 {
-	vec3 lightVec = lightPos - curPos;
-	float dist = length(lightVec);
-	float a = 1.0;
-	float b = 0.4;
-	float intensity = 1.0f / (a * dist * dist + b * dist + 1.0f);
-
-
-
+	// ambient lighting
 	float ambient = 0.20f;
 
+	// diffuse lighting
 	vec3 normal = normalize(Normal);
 	vec3 lightDirection = normalize(vec3(1.0f, 1.0f, 0.0f));
-
 	float diffuse = max(dot(normal, lightDirection), 0.0f);
 
-	float specularLight = 0.80f;
+	// specular lighting
+	float specularLight = 0.50f;
 	vec3 viewDirection = normalize(camPos - curPos);
 	vec3 reflectionDirection = reflect(-lightDirection, normal);
-	float specAmount = pow(max(dot(viewDirection, reflectionDirection), 0.0f), 8);
+	float specAmount = pow(max(dot(viewDirection, reflectionDirection), 0.0f), 16);
 	float specular = specAmount * specularLight;
 
-	return (texture(diffuse0, texCoord) * (diffuse * intensity + ambient) + texture(specular0, texCoord).r * specular * intensity * lightColor);
+	return (texture(diffuse0, texCoord) * (diffuse + ambient) + texture(specular0, texCoord).r * specular) * lightColor;
 }
 
 vec4 spotLight()
@@ -92,5 +86,5 @@ vec4 spotLight()
 
 void main()
 {
-	FragColor = pointLight();
+	FragColor = directionalLight();
 }
