@@ -83,6 +83,9 @@
     <None Include="Models\sword.gltf">
       <Filter>Resource Files\Models</Filter>
     </None>
+    <None Include="..\..\..\shape.gltf">
+      <Filter>Resource Files\Models</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VBO.h">

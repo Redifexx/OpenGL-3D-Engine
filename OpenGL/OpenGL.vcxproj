@@ -117,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Gio\source\repos\OpenGLEngineDemo\OpenGL\Libraries\include;C:\Users\gohan\source\repos\OpenGL\OpenGL\Libraries\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Gio\source\repos\OpenGLEngineDemo\OpenGL\Libraries\include;C:\Users\gohan\source\repos\OpenGL\OpenGL\Libraries\include;C:\Users\Gio\Documents\GitHub\OpenGL-3D-Engine\OpenGL\Libraries\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -160,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\OneDrive\Documents\Redifexx Games\Assets\monke.gltf" />
+    <None Include="..\..\..\shape.gltf" />
     <None Include="default.frag" />
     <None Include="default.vert" />
     <None Include="light.frag" />
